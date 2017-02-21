@@ -63,7 +63,7 @@ public class LocationInfoExample : MonoBehaviour {
             float latitude = Input.location.lastData.latitude;
             float longitude = Input.location.lastData.longitude;
             print("Location: " + latitude + " " + latitude + " " + longitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-            sendLocation(latitude, longitude, "Test");
+            sendLocation(latitude, longitude, "TestStudent");
         }
     }
 }
