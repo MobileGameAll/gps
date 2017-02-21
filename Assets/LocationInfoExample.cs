@@ -44,15 +44,26 @@ public class LocationInfoExample : MonoBehaviour {
         // Stop service if there is no need to query location updates continuously
         Input.location.Stop();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    private void sendLocation(float latitude, float longitude, string nick)
+    {
+        HttpUtils httpUtils = new HttpUtils();
+        string url = "http://openmultiplayer.com/mobileserver/position";
+        string jsonString = "{\"latitude\": " + latitude + ",\"longitude\": " + longitude + ",\"nick\": \"" + nick + "\"}";
+        StartCoroutine(httpUtils.sendHttpDataJson(url, jsonString));
+    }
+
+    // Update is called once per frame
+    void Update () {
         time += Time.deltaTime;
         if(time > 5)
         {
             time = 0;
-            print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-
+            float latitude = Input.location.lastData.latitude;
+            float longitude = Input.location.lastData.longitude;
+            print("Location: " + latitude + " " + latitude + " " + longitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
+            sendLocation(latitude, longitude, "Test");
         }
     }
 }
