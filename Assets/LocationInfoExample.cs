@@ -49,9 +49,9 @@ public class LocationInfoExample : MonoBehaviour {
     private void sendLocation(float latitude, float longitude, string nick)
     {
         HttpUtils httpUtils = new HttpUtils();
-        string url = "http://openmultiplayer.com/mobileserver/position";
+        string url = "http://openmultiplayer.com/mobileserver/message/moranguinho/position";
         string jsonString = "{\"latitude\": " + latitude + ",\"longitude\": " + longitude + ",\"nick\": \"" + nick + "\"}";
-        StartCoroutine(httpUtils.sendHttpDataJson(url, jsonString));
+        StartCoroutine(httpUtils.sendHttpDataJson(url, jsonString, null));
     }
 
     // Update is called once per frame
